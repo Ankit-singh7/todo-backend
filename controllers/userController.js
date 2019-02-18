@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 const shortid = require('shortid');
 const time = require('./../libs/timeLib');
@@ -7,14 +8,13 @@ const logger = require('./../libs/loggerLib');
 const validateInput = require('../libs/paramsValidationLib')
 const check = require('../libs/checkLib')
 const token = require('../libs/tokenLib')
-
+const AuthModel = mongoose.model('Auth')
 
 const emailLib = require('../libs/emailLib');
 
 /* Models */
 const UserModel = mongoose.model('User')
-const AuthModel = mongoose.model('Auth')
- 
+
 const applicationUrl = 'http://trego.blogs4all.tk' //url of frontend application
  
 /* Get all user Details */
@@ -252,7 +252,7 @@ let signUpFunction = (req, res) => {
                                     name: newUserObj.firstName + ' ' + newUserObj.lastName,
                                     subject: 'Welcome to Trego ',
                                     html: `<b> Dear ${newUserObj.firstName}</b><br> Hope you are doing well. 
-                                 
+                                
                                     Please click on following link to verify your account with Trego.<br>
                                     <br> <a href="${applicationUrl}/VerifyEmail/${newUserObj.userId}">Click Here</a>                                     
                                     `
@@ -553,7 +553,7 @@ let resetPasswordFunction = (req, res) => {
                                 <br> <a href="${applicationUrl}/Reset-Pass/${options.validationToken}">Click Here</a>                                 
                             </p>
     
-                            
+                            <br><b>Trego</b>
                                         `
                     }
     
