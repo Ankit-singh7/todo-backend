@@ -252,10 +252,9 @@ let signUpFunction = (req, res) => {
                                     name: newUserObj.firstName + ' ' + newUserObj.lastName,
                                     subject: 'Welcome to Trego ',
                                     html: `<b> Dear ${newUserObj.firstName}</b><br> Hope you are doing well. 
-                                
-                                    Please click on following link to verify your account with Trego.<br>
-                                    <br> <a href="${applicationUrl}/VerifyEmail/${newUserObj.userId}">Click Here</a>                                     
-                                    `
+                                           Please click on following link to verify your account with Trego.<br>
+                                          <br> <a href="${applicationUrl}/VerifyEmail/${newUserObj.userId}">Click Here</a>                                     
+                                           `
                                 }
 
                                 setTimeout(() => {
