@@ -38,10 +38,7 @@ let userSchema = new Schema(
     type: String,
     default: ''
   },
-  emailVerified:{
-    type:String,
-    default:'No'
-  },
+ 
 
   friends:{
     type:[{

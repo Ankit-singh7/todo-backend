@@ -33,7 +33,6 @@ module.exports.setRouter = (app) => {
         "data": [
             {
                 "createdOn": "2018-09-12T13:42:58.000Z",
-                "emailVerified": "Yes",
                 "validationToken": "Null",
                 "email": "fliiiwithme@gmail.com",
                 "password": "$2a$10$XvHxf9JX76JvvIeqwd2CoOdxtCraX23nR2ToAYIhynLmNquDFdbOa",
@@ -70,7 +69,6 @@ module.exports.setRouter = (app) => {
                     "friendRequestSent": [],
                     "friendRequestRecieved": [],
                     "friends": [],
-                    "emailVerified": "Yes",
                     "validationToken": "",
                     "email": "fliiiwithme@gmail.com",
                     "mobileNumber": "91 905176075",
@@ -172,26 +170,7 @@ module.exports.setRouter = (app) => {
     */
 
 
-      // params: userId.
-      app.put(`${baseUrl}/verifyEmail`, userController.verifyEmailFunction);
-      /**
-       * @apiGroup users
-       * @apiVersion  1.0.0
-       * @api {put} /api/v1/users/verifyEmail api for Verifying User Email Id.
-       *
-       * @apiParam {string} userId userId of the user. (body params) (required)
-       *
-       * @apiSuccess {object} myResponse shows error status, message, http status code, result.
-       * 
-       * @apiSuccessExample {object} Success-Response:
-          {
-              "error": false,
-              "message": "User email verified",
-              "status": 200,
-              "data": "None"
-          }
-      */
-  
+    
     // params: userId.
     app.post(`${baseUrl}/:userId/delete`, auth.isAuthorized, userController.deleteUser);
 
@@ -211,7 +190,6 @@ module.exports.setRouter = (app) => {
             "status": 200,
             "data": {
                 "createdOn": "2018-09-12T13:42:58.000Z",
-                "emailVerified": "Yes",
                 "validationToken": "Null",
                 "email": "fliiiwithme@gmail.com",
                 "password": "$2a$10$XvHxf9JX76JvvIeqwd2CoOdxtCraX23nR2ToAYIhynLmNquDFdbOa",
@@ -225,37 +203,6 @@ module.exports.setRouter = (app) => {
     */
 
 
-    app.get(`${baseUrl}/view/all`, auth.isAuthorized, userController.getAllUser);
-    /**
-     * @apiGroup users
-     * @apiVersion  1.0.0
-     * @api {get} /api/v1/users/view/all api for Getting all users.
-     *
-     * @apiParam {string} authToken authToken of the user. (query/body/header params) (required)
-     * 
-     * @apiSuccess {object} myResponse shows error status, message, http status code, result.
-     * 
-     * @apiSuccessExample {object} Success-Response:
-        {
-            "error": false,
-            "message": "All User Details Found",
-            "status": 200,
-            "data": [
-                {
-                    "createdOn": "2018-09-12T13:42:58.000Z",
-                    "emailVerified": "Yes",
-                    "validationToken": "Null",
-                    "email": "fliiiwithme@gmail.com@gmail.com",
-                    "password": "$2a$10$XvHxf9JX76JvvIeqwd2CoOdxtCraX23nR2ToAYIhynLmNquDFdbOa",
-                    "mobileNumber": "91 9867655768",
-                    "countryName": "India",
-                    "lastName": "Ankit",
-                    "firstName": "Singh",
-                    "userId": "B1cyuc8OX"
-                }
-            ]
-        }
-    */
 
 
     // params: userId.
@@ -276,7 +223,6 @@ module.exports.setRouter = (app) => {
             "status": 200,
             "data": {
                 "createdOn": "2018-09-12T13:42:58.000Z",
-                "emailVerified": "Yes",
                 "validationToken": "Null",
                 "email": "fliiiwithme@gmail.com",
                 "password": "$2a$10$XvHxf9JX76JvvIeqwd2CoOdxtCraX23nR2ToAYIhynLmNquDFdbOa",

@@ -15,30 +15,9 @@ const emailLib = require('../libs/emailLib');
 /* Models */
 const UserModel = mongoose.model('User')
 
-//const applicationUrl = 'http://trego.blogs4all.tk' //url of frontend application
-const applicationUrl = 'http://localhost:4200'
+const applicationUrl = 'http://trego.blogs4all.tk' //url of frontend application
+
  
-/* Get all user Details */
-let getAllUser = (req, res) => {
-    UserModel.find({ 'emailVerified': 'Yes' })
-        .select(' -__v -_id')
-        .lean()
-        .exec((err, result) => {
-            if (err) {
-                console.log(err)
-                logger.error(err.message, 'User Controller: getAllUser', 10)
-                let apiResponse = response.generate(true, 'Failed To Find User Details', 500, null)
-                res.send(apiResponse)
-            } else if (check.isEmpty(result)) {
-                logger.info('No User Found', 'User Controller: getAllUser')
-                let apiResponse = response.generate(true, 'No User Found', 404, null)
-                res.send(apiResponse)
-            } else {
-                let apiResponse = response.generate(false, 'All User Details Found', 200, result)
-                res.send(apiResponse)
-            }
-        })
-}// end get all users
 
 /* Get single user details */
 /* params : userId
@@ -120,7 +99,7 @@ let editUser = (req, res) => {
 /* Verify Email  */
 /* params : userId
 */
-
+/*
 let verifyEmailFunction = (req, res) => {
     let findUser = () => {
         //console.log("findUser");
@@ -190,7 +169,7 @@ let verifyEmailFunction = (req, res) => {
             res.send(err)
         })
 }
-
+*/
 
 // start user signup function 
 /* params : firstname,lastName,email,mobileNumber,password
@@ -246,21 +225,7 @@ let signUpFunction = (req, res) => {
                                 reject(apiResponse)
                             } else {
                                 let newUserObj = newUser.toObject();
-                                console.log(`${applicationUrl}/VerifyEmail/${newUserObj.userId}`)
-                                //Creating object for sending welcome email
-                                let sendEmailOptions = {
-                                    email: newUserObj.email,
-                                    name: newUserObj.firstName + ' ' + newUserObj.lastName,
-                                    subject: 'Welcome to Trego ',
-                                    html: `<b> Dear ${newUserObj.firstName}</b><br> Hope you are doing well. 
-                                           <br> Please click on following link to verify your account with Trego.<br>
-                                          <br> <a href="${applicationUrl}/VerifyEmail/${newUserObj.userId}">Click Here</a>                                     
-                                           `
-                                }
-
-                                setTimeout(() => {
-                                    emailLib.sendEmail(sendEmailOptions);
-                                }, 2000);
+                              
 
                                 resolve(newUserObj)
                             }
@@ -300,7 +265,7 @@ let loginFunction = (req, res) => {
             if (req.body.email) {
                 console.log("req body email is there");
                 //console.log(req.body);
-                UserModel.findOne({ $and : [{email: req.body.email} ,{emailVerified:'Yes' }] }, (err, userDetails) => {
+                UserModel.findOne({email: req.body.email}, (err, userDetails) => {
                     /* handle the error here if the User is not found */
                     if (err) {
                         console.log(err)
@@ -828,12 +793,11 @@ let changePasswordFunction = (req, res) => {
 module.exports = {
 
     signUpFunction: signUpFunction,
-    verifyEmailFunction:verifyEmailFunction,
     loginFunction: loginFunction,
     logout: logout,
 
     getSingleUser: getSingleUser,
-    getAllUser: getAllUser,
+    
 
     editUser: editUser,
     deleteUser: deleteUser,
