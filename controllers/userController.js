@@ -15,7 +15,8 @@ const emailLib = require('../libs/emailLib');
 /* Models */
 const UserModel = mongoose.model('User')
 
-const applicationUrl = 'http://trego.blogs4all.tk' //url of frontend application
+//const applicationUrl = 'http://trego.blogs4all.tk' //url of frontend application
+const applicationUrl = 'http://localhost:4200'
  
 /* Get all user Details */
 let getAllUser = (req, res) => {
@@ -245,7 +246,7 @@ let signUpFunction = (req, res) => {
                                 reject(apiResponse)
                             } else {
                                 let newUserObj = newUser.toObject();
-                                console.log(`${applicationUrl}/verify-email/${newUserObj.userId}`)
+                                console.log(`${applicationUrl}/VerifyEmail/${newUserObj.userId}`)
                                 //Creating object for sending welcome email
                                 let sendEmailOptions = {
                                     email: newUserObj.email,

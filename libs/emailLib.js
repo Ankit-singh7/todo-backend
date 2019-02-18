@@ -8,6 +8,10 @@ let sendEmail = (sendEmailOptions) => {
     
 
     let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        requireTLS: true,
         service: 'gmail', 
         auth: {
             user:'Ankit.as2307@gmail.com', 
