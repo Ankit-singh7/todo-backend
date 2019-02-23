@@ -17,6 +17,28 @@ const UserModel = mongoose.model('User')
 
 const applicationUrl = 'http://trego.blogs4all.tk' //url of frontend application
 
+/* Get all user Details */
+let getAllUser = (req, res) => {
+    UserModel.find()
+        .select(' -__v -_id')
+        .lean()
+        .exec((err, result) => {
+            if (err) {
+                console.log(err)
+                logger.error(err.message, 'User Controller: getAllUser', 10)
+                let apiResponse = response.generate(true, 'Failed To Find User Details', 500, null)
+                res.send(apiResponse)
+            } else if (check.isEmpty(result)) {
+                logger.info('No User Found', 'User Controller: getAllUser')
+                let apiResponse = response.generate(true, 'No User Found', 404, null)
+                res.send(apiResponse)
+            } else {
+                let apiResponse = response.generate(false, 'All User Details Found', 200, result)
+                res.send(apiResponse)
+            }
+        })
+}// end get all users
+
  
 
 /* Get single user details */
@@ -804,5 +826,6 @@ module.exports = {
 
     resetPasswordFunction: resetPasswordFunction,
     updatePasswordFunction: updatePasswordFunction,
-    changePasswordFunction:changePasswordFunction
+    changePasswordFunction:changePasswordFunction,
+    getAllUser:getAllUser
 }// end exports

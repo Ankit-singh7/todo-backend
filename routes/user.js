@@ -9,6 +9,8 @@ module.exports.setRouter = (app) => {
 
     let baseUrl = `${appConfig.apiVersion}/users`;
 
+    app.get(`${baseUrl}/view/all`,auth.isAuthorized, userController.getAllUser);
+
     // params: firstName, lastName, email, password , mobileNumber.
     app.post(`${baseUrl}/signup`, userController.signUpFunction);
     /**
