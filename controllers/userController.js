@@ -15,7 +15,7 @@ const emailLib = require('../libs/emailLib');
 /* Models */
 const UserModel = mongoose.model('User')
 
-const applicationUrl = 'http://trego.blogs4all.tk' //url of frontend application
+const applicationUrl = 'http://trego.tk' //url of frontend application
 
 /* Get all user Details */
 let getAllUser = (req, res) => {
