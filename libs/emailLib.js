@@ -11,7 +11,7 @@ let sendEmail = (sendEmailOptions) => {
         service: 'gmail', 
         auth: {
             user:'Ankit.as2307@gmail.com', 
-            pass: 'encyclopedia2'
+            pass: 'Your Password'
         }
     });
 
